@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chargement en cours...</title>
+    <style>
+        body {
+            font-family: 'Bookman Old Style', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            /*background-color: #f0f0f0; /* Couleur de fond gris clair */
+            background-image: linear-gradient(45deg, #4CAF50, #2196F3); /* Dégradé de vert à bleu */
+
+        }
+        .loader-container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9); /* Couleur de fond blanche transparente */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Ombre légère */
+            width: 500px; /* Largeur du conteneur */
+        }
+        .loader {
+            border: 8px solid #3498db; /* Couleur bleue pour le spinner */
+            border-top: 8px solid #f3f3f3;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .loading-text {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .welcome-message {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        .divider {
+            width: 100px;
+            height: 2px;
+            background-color: #3498db;
+            margin: 0 auto 20px auto;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            background-color: #3498db;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 5px;
+            animation: pulse 1s ease-in-out infinite alternate;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader-container">
+        <div class="loader"></div>
+        <div class="loading-text">Chargement en cours...</div>
+        <div class="divider"></div>
+        <p class="welcome-message">Bienvenue sur <strong>Service4milles</strong>.</p>
+        <p>Profitez de nos services en miles !</p>
+        <div class="dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+    <script>
+        // Attendre le chargement complet de la page
+        window.addEventListener('load', function() {
+            // Cacher l'élément d'animation après un certain délai (par exemple, 2 secondes)
+            setTimeout(function() {
+                const loaderContainer = document.querySelector('.loader-container');
+                
+                // Ajouter une transition de fondu
+                loaderContainer.style.transition = 'opacity 1s';
+                loaderContainer.style.opacity = '0';
+                
+                // Rediriger vers la page d'accueil après le délai
+                setTimeout(function() {
+                    window.location.href = 'accueil.php'; // Remplacez 'accueil.php' par l'URL de votre page d'accueil
+                }, 1000); // Attendre 1 seconde pour que l'animation de fondu se termine
+            }, 2000); // Attendre 2 secondes avant de démarrer la redirection
+        });
+    </script>
+</body>
+</html>
